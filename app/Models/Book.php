@@ -59,10 +59,10 @@ class Book extends Model
             ->minReviews(2);
     }
 
-    public function scopePopularLastSixMonth(Builder $query): Builder|QueryBuilder
+    public function scopePopularLast6Months(Builder $query): Builder|QueryBuilder
     {
-        return $query->popular(now()->subMonth(6), now())
-            ->highestRated(now()->subMonth(6), now())
+        return $query->popular(now()->subMonths(6), now())
+            ->highestRated(now()->subMonths(6), now())
             ->minReviews(5);
     }
 
@@ -73,10 +73,10 @@ class Book extends Model
             ->minReviews(2);
     }
 
-    public function scopeHighestRatedLastSixMonth(Builder $query): Builder|QueryBuilder
+    public function scopeHighestRatedLast6Months(Builder $query): Builder|QueryBuilder
     {
-        return $query->highestRated(now()->subMonth(6), now())
-            ->popular(now()->subMonth(6), now())
+        return $query->highestRated(now()->subMonths(6), now())
+            ->popular(now()->subMonths(6), now())
             ->minReviews(5);
     }
 }
