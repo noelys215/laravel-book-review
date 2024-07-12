@@ -36,9 +36,14 @@ class BookController extends Controller
         //
     }
 
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view('books.show',
+            [
+                'book' => $book->load(
+                    ['reviews' => fn($query) => $query->latest()]
+                )
+            ]);
     }
 
     public function edit(string $id)
